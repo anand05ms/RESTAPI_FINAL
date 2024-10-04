@@ -8,7 +8,6 @@ const {
 
 const router = require("express").Router();
 
-// get the user by category
 router.post("/create", createItem);
 
 router.get("/", getAllItems);

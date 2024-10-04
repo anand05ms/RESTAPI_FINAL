@@ -20,7 +20,7 @@ billing.controller("billCtrl", function ($scope, $http) {
 
   $scope.billedItems = [];
   $scope.customerName = "";
-  $scope.mobileNumber = ""; // Add mobile number here
+  $scope.mobileNumber = "";
   $scope.amtReceived = 0;
   $scope.balanceAmt = 0;
 
@@ -35,7 +35,7 @@ billing.controller("billCtrl", function ($scope, $http) {
   $scope.$watch("newItem.name", function (newVal) {
     let item = $scope.items?.find((item) => item.name === newVal);
     if (item) {
-      $scope.newItem._id = item._id; // Assign MongoDB _id
+      $scope.newItem._id = item._id;
       $scope.newItem.mrp = item.mrp;
       $scope.newItem.rate = item.rate;
     } else {
@@ -56,7 +56,7 @@ billing.controller("billCtrl", function ($scope, $http) {
       );
       if (index !== -1) {
         $scope.billedItems.push({
-          _id: $scope.newItem._id, // Use MongoDB _id
+          _id: $scope.newItem._id,
           name: $scope.newItem.name,
           mrp: parseFloat($scope.newItem.mrp),
           rate: parseFloat($scope.newItem.rate),
@@ -110,7 +110,7 @@ billing.controller("billCtrl", function ($scope, $http) {
       return item.name.toLowerCase().includes(query);
     });
     if ($scope.filteredItems.length > 0) {
-      $scope.selectedIndex = 0; // Highlight the first item
+      $scope.selectedIndex = 0;
     } else {
       $scope.selectedIndex = -1;
     }
@@ -118,9 +118,9 @@ billing.controller("billCtrl", function ($scope, $http) {
 
   $scope.selectItem = function (item) {
     $scope.newItem.name = item.name;
-    $scope.newItem._id = item._id; // Assign the MongoDB _id
-    $scope.filteredItems = []; // Clear the dropdown after selection
-    $scope.selectedIndex = -1; // Reset selected index
+    $scope.newItem._id = item._id;
+    $scope.filteredItems = [];
+    $scope.selectedIndex = -1;
   };
 
   $scope.handleKeydown = function (event) {
@@ -154,7 +154,6 @@ billing.controller("billCtrl", function ($scope, $http) {
       return;
     }
 
-    // Prepare customer data
     const customerData = {
       name: $scope.customerName,
       mobileNumber: $scope.mobileNumber,
@@ -176,7 +175,7 @@ billing.controller("billCtrl", function ($scope, $http) {
       amountReceived: amtReceived,
       balanceAmount: balanceAmount,
       cart: $scope.billedItems.map((item) => ({
-        itemId: item._id, // Use MongoDB _id
+        itemId: item._id,
         quantity: item.quantity,
       })),
       date: new Date().toISOString().split("T")[0],
@@ -190,7 +189,7 @@ billing.controller("billCtrl", function ($scope, $http) {
       .post("http://localhost:3000/orders/create", orderData)
       .then(function (response) {
         console.log("Order saved successfully:", response.data);
-        // Redirect to billItem.html if needed
+
         alert("BILL ADDED TO DATABASE");
       })
       .catch(function (error) {

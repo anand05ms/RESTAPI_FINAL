@@ -39,11 +39,10 @@ module.exports.updateItem = async (req, res) => {
   try {
     const { name, mrp, rate } = req.body;
 
-    // Find and update the item
     const updatedItem = await Item.findByIdAndUpdate(
       req.params.id,
-      { name, mrp, rate }, // Fields to update
-      { new: true, runValidators: true } // Return the updated document and validate it
+      { name, mrp, rate },
+      { new: true, runValidators: true }
     );
 
     if (!updatedItem) return res.status(404).json({ error: "Item not found" });

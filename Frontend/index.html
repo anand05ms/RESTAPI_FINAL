@@ -11,17 +11,32 @@
     <link rel="stylesheet" href="style.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <link`
+    <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
   </head>
   <body ng-controller="billCtrl">
     <div class="container-fluid">
       <h2 class="text-center mt-2">Pandian Stores</h2>
+      <hr />
+      <div class="row">
+        <div class="col-6 text-center">
+          <h4>
+            <a href="./index.html" class="text-decoration-none text-dark"
+              >BILLING SECTION</a
+            >
+          </h4>
+        </div>
+        <div class="col-6 text-center">
+          <h4>
+            <a href="./admin.html" class="text-decoration-none text-dark"
+              >ITEMS</a
+            >
+          </h4>
+        </div>
+      </div>
       <hr />
       <form id="bill">
         <div class="row g-3">
@@ -219,7 +234,7 @@
         class="btn btn-danger btn-print my-5"
         ng-click="print()"
       >
-        Print Receipt
+        ADD BILL
       </button>
     </div>
 
